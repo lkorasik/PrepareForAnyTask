@@ -1,7 +1,8 @@
 @set remove="true"
-@set from="C:\python\CSLint"
-@set to="C:\users\lkora\desktop\CSLint"
+@set from="C:\Files\Code\Python\CSLint"
+@set to="C:\users\lev\desktop\CSLint"
 @set folder="CSLint"
+@set archive_name="CSLint.zip"
 
 @if "%1"=="-i" (
 	@set remove="false"
@@ -19,11 +20,13 @@
 
 @echo Start clean up...
 
-@prepare.py %folder%
+@prepare.py %to%
 
 @echo Start achiving...
 
-@tar -cf CSLint.zip CSLint
+@cd %to%
+@cd ..
+@tar -cf %archive_name% %folder%
 
 @if %remove%=="true" (
 	@rmdir %to% /S /Q
